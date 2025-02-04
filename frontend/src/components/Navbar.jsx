@@ -5,14 +5,14 @@ const Navbar = () => {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="p-4 bg-blue-500 text-white flex justify-between">
+    <nav className="flex justify-between p-4 text-white bg-blue-500">
       <h1 className="text-lg font-bold">MyApp</h1>
 
       <div>
         {user ? (
           <>
-            <span className="mr-4">Welcome, {user.username}!</span>
-            <button onClick={logout} className="bg-red-500 px-4 py-1 rounded">
+            <span className="mr-4">Welcome, {user.name}!</span>
+            <button onClick={logout} className="px-4 py-1 bg-red-500 rounded">
               Logout
             </button>
           </>
