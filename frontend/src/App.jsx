@@ -15,7 +15,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
 
-          {/* Define Routes */}
           <Route
             path="/home"
             element={
@@ -24,6 +23,7 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          
           <Route 
             path="/category/:id" 
             element={
