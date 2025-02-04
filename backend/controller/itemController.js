@@ -68,6 +68,7 @@ const removeItemFromCategory = async (req, res) => {
 
 const getItemsFromCategory = async (req, res) => {
     const { categoryName } = req.query;
+    const userId = req.user._id;
   
     if (!categoryName) {
       return res.status(400).json({ message: "Category name is required" });
