@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
@@ -8,6 +9,11 @@ const itemRoutes = require('./routes/itemRoutes');
 dotenv.config();
 
 const app = express();
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}))
 app.use(express.json());
 connectDB();
 
