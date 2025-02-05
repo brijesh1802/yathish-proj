@@ -23,7 +23,7 @@ const HomePage = () => {
 
   const fetchCategories = async (token) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/categories/get", {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/categories/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -40,7 +40,7 @@ const HomePage = () => {
     if (newCategoryName.trim()) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/categories/add",
+          `${import.meta.env.VITE_BACKEND_URL}/api/categories/add`,
           { categoryName: newCategoryName },
           {
             headers: {
@@ -62,7 +62,7 @@ const HomePage = () => {
   const deleteCategory = async (categoryName) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.delete("http://localhost:5000/api/categories/remove", {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/categories/remove`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

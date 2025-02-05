@@ -13,7 +13,7 @@ export default function ContainerPage() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/items/get", {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/items/get`, {
           params: { categoryName: id },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -31,7 +31,7 @@ export default function ContainerPage() {
   const addTodo = async () => {
     if (newTodo.trim()) {
       try {
-        await axios.post("http://localhost:5000/api/items/add", {
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/items/add`, {
           categoryName: id,
           item: newTodo,
         }, {
@@ -50,7 +50,7 @@ export default function ContainerPage() {
   const deleteTodo = async (index) => {
     const itemToDelete = todos[index];
     try {
-      await axios.delete("http://localhost:5000/api/items/remove", {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/items/remove`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -74,7 +74,7 @@ export default function ContainerPage() {
     if (editedTodo.trim()) {
       try {
         await deleteTodo(editIndex);
-        await axios.post("http://localhost:5000/api/items/add", {
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/items/add`, {
           categoryName: id,
           item: editedTodo,
         }, {
